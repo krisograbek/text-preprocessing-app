@@ -1,3 +1,4 @@
+import { Radio, RadioGroup } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
@@ -43,10 +44,11 @@ function App() {
   const classes = useStyles();
   const [inputText, setInputText] = useState("")
   const [outputText, setOutputText] = useState("")
+  const [reducer, setReducer] = useState("None")
 
   const [operations, setOperations] = useState({
     lowercase: false,
-    lemmatize: false,
+    accented: false,
     removePunctuation: false,
     removeNumbers: false,
     removeHTML: false,
@@ -62,30 +64,45 @@ function App() {
     });
   };
 
+  const handleReducers = (event) => {
+    setReducer(event.target.value)
+  }
+
   const {
+    // normalizers
     lowercase,
-    lemmatize,
+    accented,
+
+    // removals
     removePunctuation,
     removeNumbers,
     removeHTML,
     removeNewlines,
   } = operations
 
-  const cleanersList = [
+  const normalizersList = [
+    { name: "lowercase", label: "lowercase", varName: lowercase },
+    { name: "accented", label: "accented", varName: accented },
+  ]
+
+  const removalList = [
     { name: "removeHTML", label: "HTML tags", varName: removeHTML },
     { name: "removePunctuation", label: "Punctuation", varName: removePunctuation },
     { name: "removeNumbers", label: "Numbers", varName: removeNumbers },
     { name: "removeNewlines", label: "Newlines", varName: removeNewlines },
   ]
-  const normalizersList = [
-    { name: "lowercase", label: "lowercase", varName: lowercase },
-    { name: "lemmatize", label: "lemmatize", varName: lemmatize },
+
+  const reducersList = [
+    { name: "None", label: "None" },
+    { name: "lemmatization", label: "Lemmatization" },
+    { name: "porterStemmer", label: "Porter Stemmer" },
   ]
 
   useEffect(() => {
     const body = {
       text: inputText,
-      operations: operations
+      operations: operations,
+      reducer: reducer
     }
     fetch(`/api/preprocess`, {
       method: 'POST',
@@ -99,7 +116,7 @@ function App() {
         setOutputText(data.text);
       })
       .catch(error => console.log(error))
-  }, [operations])
+  }, [operations, reducer])
 
   return (
     <ThemeProvider theme={theme}>
@@ -113,7 +130,7 @@ function App() {
               <FormControl component="fieldset">
                 <FormLabel component="legend">Remove</FormLabel>
                 <FormGroup>
-                  {cleanersList.map(({ name, label, varName }) => {
+                  {removalList.map(({ name, label, varName }) => {
                     return (
                       <FormControlLabel
                         label={label}
@@ -133,7 +150,7 @@ function App() {
                 <FormHelperText></FormHelperText>
               </FormControl>
               <FormControl component="fieldset">
-                <FormLabel component="legend">Remove</FormLabel>
+                <FormLabel component="legend">Clean</FormLabel>
                 <FormGroup>
                   {normalizersList.map(({ name, label, varName }) => {
                     return (
@@ -152,6 +169,29 @@ function App() {
                     )
                   })}
                 </FormGroup>
+                <FormHelperText></FormHelperText>
+              </FormControl>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Reduce Vocabulary</FormLabel>
+                <RadioGroup
+                  onChange={handleReducers}
+                  value="None"
+                >
+                  {reducersList.map(({ name, label }) => {
+                    return (
+                      <FormControlLabel
+                        value={name}
+                        control={
+                          <Radio
+                            checked={reducer == name}
+                            color="primary"
+                          />
+                        }
+                        label={label}
+                      />
+                    )
+                  })}
+                </RadioGroup>
                 <FormHelperText></FormHelperText>
               </FormControl>
             </Grid>
