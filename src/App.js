@@ -46,9 +46,11 @@ function App() {
 
   const [operations, setOperations] = useState({
     lowercase: false,
-    tokenize: false,
+    lemmatize: false,
     removePunctuation: false,
     removeNumbers: false,
+    removeHTML: false,
+    removeNewlines: false,
   });
 
   const theme = darkTheme
@@ -60,7 +62,25 @@ function App() {
     });
   };
 
-  const { lowercase, tokenize, removePunctuation, removeNumbers } = operations
+  const {
+    lowercase,
+    lemmatize,
+    removePunctuation,
+    removeNumbers,
+    removeHTML,
+    removeNewlines,
+  } = operations
+
+  const cleanersList = [
+    { name: "removeHTML", label: "HTML tags", varName: removeHTML },
+    { name: "removePunctuation", label: "Punctuation", varName: removePunctuation },
+    { name: "removeNumbers", label: "Numbers", varName: removeNumbers },
+    { name: "removeNewlines", label: "Newlines", varName: removeNewlines },
+  ]
+  const normalizersList = [
+    { name: "lowercase", label: "lowercase", varName: lowercase },
+    { name: "lemmatize", label: "lemmatize", varName: lemmatize },
+  ]
 
   useEffect(() => {
     const body = {
@@ -93,60 +113,44 @@ function App() {
               <FormControl component="fieldset">
                 <FormLabel component="legend">Remove</FormLabel>
                 <FormGroup>
-                  <FormControlLabel
-                    label="Numbers"
-                    control={
-                      <Checkbox
-                        value=""
-                        checked={removeNumbers}
-                        onChange={handleChange}
-                        color="primary"
-                        name="removeNumbers"
+                  {cleanersList.map(({ name, label, varName }) => {
+                    return (
+                      <FormControlLabel
+                        label={label}
+                        control={
+                          <Checkbox
+                            value=""
+                            checked={varName}
+                            onChange={handleChange}
+                            color="primary"
+                            name={name}
+                          />
+                        }
                       />
-                    }
-                  />
-                  <FormControlLabel
-                    label="Punctuation"
-                    control={
-                      <Checkbox
-                        value=""
-                        checked={removePunctuation}
-                        onChange={handleChange}
-                        color="primary"
-                        name="removePunctuation"
-                      />
-                    }
-                  />
+                    )
+                  })}
                 </FormGroup>
                 <FormHelperText></FormHelperText>
               </FormControl>
               <FormControl component="fieldset">
-                <FormLabel component="legend">Normalize</FormLabel>
+                <FormLabel component="legend">Remove</FormLabel>
                 <FormGroup>
-                  <FormControlLabel
-                    label="lowercase"
-                    control={
-                      <Checkbox
-                        value=""
-                        checked={lowercase}
-                        onChange={handleChange}
-                        color="primary"
-                        name="lowercase"
+                  {normalizersList.map(({ name, label, varName }) => {
+                    return (
+                      <FormControlLabel
+                        label={label}
+                        control={
+                          <Checkbox
+                            value=""
+                            checked={varName}
+                            onChange={handleChange}
+                            color="primary"
+                            name={name}
+                          />
+                        }
                       />
-                    }
-                  />
-                  <FormControlLabel
-                    label="tokenize"
-                    control={
-                      <Checkbox
-                        value=""
-                        checked={tokenize}
-                        onChange={handleChange}
-                        color="primary"
-                        name="tokenize"
-                      />
-                    }
-                  />
+                    )
+                  })}
                 </FormGroup>
                 <FormHelperText></FormHelperText>
               </FormControl>
