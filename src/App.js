@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import TextField from '@mui/material/TextField'
 import makeStyles from '@mui/styles/makeStyles'
 import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import Container from '@mui/material/Container'
 import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
+import Toolbox from './components/Toolbox';
+import OutputText from './components/OutputText';
+import InputText from './components/InputText';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +37,7 @@ const darkTheme = createTheme({
 function App() {
   const classes = useStyles();
   const [inputText, setInputText] = useState("")
+  const [outputText, setOutputText] = useState("")
   const theme = darkTheme
 
   useEffect(() => {
@@ -46,22 +49,16 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Paper className={classes.root} elevation={0} square={true}>
-        <Grid container direction="column" alignContent="center" justifyContent="stretch">
+        <Grid container alignContent="center" justifyContent="stretch">
           <Container maxWidth="lg">
-            <Grid item sm={12}>
-              <TextField
-                id="fullWidth"
-                multiline
-                fullWidth
-                rows={10}
-                className={classes.textfield}
-                label="Hello"
-                value={inputText}
-                onChange={e => setInputText(e.target.value)}
-                inputProps={{
-                  maxLength: 1000,
-                }}
-              />
+            <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
+              <InputText inputText={inputText} setInputText={setInputText} />
+            </Grid>
+            <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
+              <Toolbox />
+            </Grid>
+            <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
+              <OutputText outputText={outputText} setOutputText={setOutputText} />
             </Grid>
           </Container>
         </Grid>
