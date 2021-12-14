@@ -12,7 +12,7 @@ function InputText(props) {
       rows={10}
       label="Output"
       value={outputText}
-      onChange={e => setOutputText(e.target.value)}
+      // onChange={e => setOutputText(e.target.value)}
       inputProps={{
         maxLength: 1000,
       }}
