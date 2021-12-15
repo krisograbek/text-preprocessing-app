@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     paddingTop: 80
   },
+  formLabel: {
+    marginTop: 16,
+    width: '100%',
+  }
 }))
 
 const darkTheme = createTheme({
@@ -53,6 +57,9 @@ function App() {
     removeNumbers: false,
     removeHTML: false,
     removeNewlines: false,
+    removeEmojis: false,
+    removeUrls: false,
+    removeStopwords: false,
   });
 
   const theme = darkTheme
@@ -78,6 +85,9 @@ function App() {
     removeNumbers,
     removeHTML,
     removeNewlines,
+    removeEmojis,
+    removeUrls,
+    removeStopwords,
   } = operations
 
   const normalizersList = [
@@ -90,12 +100,16 @@ function App() {
     { name: "removePunctuation", label: "Punctuation", varName: removePunctuation },
     { name: "removeNumbers", label: "Numbers", varName: removeNumbers },
     { name: "removeNewlines", label: "Newlines", varName: removeNewlines },
+    { name: "removeEmojis", label: "Emojis", varName: removeEmojis },
+    { name: "removeUrls", label: "Urls", varName: removeUrls },
+    { name: "removeStopwords", label: "Stopwords", varName: removeStopwords },
   ]
 
   const reducersList = [
     { name: "None", label: "None" },
     { name: "lemmatization", label: "Lemmatization" },
     { name: "porterStemmer", label: "Porter Stemmer" },
+    { name: "snowballStemmer", label: "Snowball Stemmer" },
   ]
 
   useEffect(() => {
@@ -134,6 +148,7 @@ function App() {
                     return (
                       <FormControlLabel
                         label={label}
+                        className={classes.formLabel}
                         control={
                           <Checkbox
                             value=""
@@ -156,6 +171,7 @@ function App() {
                     return (
                       <FormControlLabel
                         label={label}
+                        className={classes.formLabel}
                         control={
                           <Checkbox
                             value=""
@@ -180,6 +196,7 @@ function App() {
                   {reducersList.map(({ name, label }) => {
                     return (
                       <FormControlLabel
+                        className={classes.formLabel}
                         value={name}
                         control={
                           <Radio
