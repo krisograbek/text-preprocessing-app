@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
     '& label.Mui-disabled': {
       color: 'white',
     },
+    '& textarea.Mui-disabled': {
+      // color: 'white',
+      textFillColor: 'white'
+    },
     '& .MuiOutlinedInput-root': {
       '&:hover fieldset': {
         borderColor: theme.palette.primary.light,

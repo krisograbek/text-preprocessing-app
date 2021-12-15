@@ -71,6 +71,13 @@ def remove_stopwords(text):
 
     return text
 
+def correct_spelling(text):
+    from autocorrect import Speller
+    speller = Speller(lang='en')
+    text = speller(text)
+
+    return text
+
 def handle_removal(text, operations):
     if operations["removeHTML"]:
         text = re.sub(r'<[^<]+?>', '', text)
@@ -87,6 +94,9 @@ def handle_removal(text, operations):
     if operations["removeUrls"]:
         text = re.sub(r'http\S+', '', text)
     
+    if operations["spellcheck"]:
+        text = correct_spelling(text)
+
     if operations["removeStopwords"]:
         text = remove_stopwords(text)
 
