@@ -6,6 +6,7 @@ function InputText(props) {
   return (
     <TextField
       id="fullWidth"
+      // color="secondary"
       multiline
       fullWidth
       disabled
