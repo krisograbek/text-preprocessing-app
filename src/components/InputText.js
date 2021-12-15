@@ -8,7 +8,7 @@ function InputText(props) {
       id="fullWidth"
       multiline
       fullWidth
-      rows={10}
+      rows={5}
       label="Paste Your Text Here"
       value={inputText}
       onChange={e => setInputText(e.target.value)}

@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from '@mui/material';
+import { Radio, RadioGroup, Typography } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
@@ -20,11 +20,20 @@ import OutputText from './components/OutputText';
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
-    paddingTop: 80
+    paddingTop: 40
   },
   formLabel: {
-    marginTop: 16,
+    // margin: 0,
     width: '100%',
+    backgroundColor: '#333',
+    borderRadius: 5,
+    '&:hover': {
+      backgroundColor: '#444'
+    }
+  },
+  checkbox: {
+    margin: 0,
+    height: 32,
   }
 }))
 
@@ -53,6 +62,7 @@ function App() {
   const [operations, setOperations] = useState({
     lowercase: false,
     accented: false,
+    spellcheck: false,
     removePunctuation: false,
     removeNumbers: false,
     removeHTML: false,
@@ -79,6 +89,7 @@ function App() {
     // normalizers
     lowercase,
     accented,
+    spellcheck,
 
     // removals
     removePunctuation,
@@ -91,12 +102,13 @@ function App() {
   } = operations
 
   const normalizersList = [
-    { name: "lowercase", label: "lowercase", varName: lowercase },
-    { name: "accented", label: "accented", varName: accented },
+    { name: "lowercase", label: "Lowercase", varName: lowercase },
+    { name: "spellcheck", label: "Spell Correction", varName: spellcheck },
+    { name: "accented", label: "Accented Characters", varName: accented },
   ]
 
   const removalList = [
-    { name: "removeHTML", label: "HTML tags", varName: removeHTML },
+    { name: "removeHTML", label: "HTML Tags", varName: removeHTML },
     { name: "removePunctuation", label: "Punctuation", varName: removePunctuation },
     { name: "removeNumbers", label: "Numbers", varName: removeNumbers },
     { name: "removeNewlines", label: "Newlines", varName: removeNewlines },
@@ -136,81 +148,95 @@ function App() {
     <ThemeProvider theme={theme}>
       <Paper className={classes.root} elevation={0} square={true}>
         <Grid container alignContent="center" justifyContent="stretch">
-          <Container maxWidth="lg">
-            <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
+          <Container maxWidth="md">
+            <Grid item sm={12} pt={{ sm: 4, md: 8 }}>
               <InputText inputText={inputText} setInputText={setInputText} />
             </Grid>
-            <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
-              <FormControl component="fieldset">
-                <FormLabel component="legend">Remove</FormLabel>
-                <FormGroup>
-                  {removalList.map(({ name, label, varName }) => {
-                    return (
-                      <FormControlLabel
-                        label={label}
-                        className={classes.formLabel}
-                        control={
-                          <Checkbox
-                            value=""
-                            checked={varName}
-                            onChange={handleChange}
-                            color="primary"
-                            name={name}
-                          />
-                        }
-                      />
-                    )
-                  })}
-                </FormGroup>
-                <FormHelperText></FormHelperText>
-              </FormControl>
-              <FormControl component="fieldset">
-                <FormLabel component="legend">Clean</FormLabel>
-                <FormGroup>
-                  {normalizersList.map(({ name, label, varName }) => {
-                    return (
-                      <FormControlLabel
-                        label={label}
-                        className={classes.formLabel}
-                        control={
-                          <Checkbox
-                            value=""
-                            checked={varName}
-                            onChange={handleChange}
-                            color="primary"
-                            name={name}
-                          />
-                        }
-                      />
-                    )
-                  })}
-                </FormGroup>
-                <FormHelperText></FormHelperText>
-              </FormControl>
-              <FormControl component="fieldset">
-                <FormLabel component="legend">Reduce Vocabulary</FormLabel>
-                <RadioGroup
-                  onChange={handleReducers}
-                  value="None"
-                >
-                  {reducersList.map(({ name, label }) => {
-                    return (
-                      <FormControlLabel
-                        className={classes.formLabel}
-                        value={name}
-                        control={
-                          <Radio
-                            checked={reducer == name}
-                            color="primary"
-                          />
-                        }
-                        label={label}
-                      />
-                    )
-                  })}
-                </RadioGroup>
-                <FormHelperText></FormHelperText>
-              </FormControl>
+            <Grid item sm={12} py={{ xs: 2, md: 4 }}>
+              <Grid container spacing={1}>
+                <Grid item sm={12} pb={3}>
+                  <Typography variant="body1" color="primary">Remove</Typography>
+                  <FormGroup>
+                    <Grid container spacing={1}>
+                      {removalList.map(({ name, label, varName }) => {
+                        return (
+                          <Grid item xs={12} sm={6} px={1}>
+                            <FormControlLabel
+                              label={label}
+                              className={classes.formLabel}
+                              control={
+                                <Checkbox
+                                  className={classes.checkbox}
+                                  value=""
+                                  checked={varName}
+                                  onChange={handleChange}
+                                  color="primary"
+                                  name={name}
+                                />
+                              }
+                            />
+                          </Grid>
+                        )
+                      })}
+                    </Grid>
+                  </FormGroup>
+                </Grid>
+                <Grid item xs={12} sm={6} px={1}>
+                  <Typography variant="body1" color="primary">Reduce Vocabulary</Typography>
+                  <RadioGroup
+                    onChange={handleReducers}
+                    value="None"
+                  >
+                    <Grid container spacing={1}>
+                      {reducersList.map(({ name, label }) => {
+                        return (
+                          <Grid item xs={12}>
+                            <FormControlLabel
+                              className={classes.formLabel}
+                              value={name}
+                              control={
+                                <Radio
+                                  className={classes.checkbox}
+                                  checked={reducer == name}
+                                  color="primary"
+                                />
+                              }
+                              label={label}
+                            />
+                          </Grid>
+                        )
+                      })}
+                    </Grid>
+                  </RadioGroup>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography variant="body1" color="primary">Clean</Typography>
+                  <FormGroup>
+                    <Grid container spacing={1}>
+                      {normalizersList.map(({ name, label, varName }) => {
+                        return (
+                          <Grid item xs={12} px={1}>
+                            <FormControlLabel
+                              label={label}
+                              className={classes.formLabel}
+                              control={
+                                <Checkbox
+                                  className={classes.checkbox}
+                                  value=""
+                                  checked={varName}
+                                  onChange={handleChange}
+                                  color="primary"
+                                  name={name}
+                                />
+                              }
+                            />
+                          </Grid>
+                        )
+                      })}
+                    </Grid>
+                  </FormGroup>
+                </Grid>
+              </Grid>
             </Grid>
             <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
               <OutputText outputText={outputText} />

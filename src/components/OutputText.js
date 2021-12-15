@@ -10,7 +10,7 @@ function InputText(props) {
       multiline
       fullWidth
       disabled
-      rows={10}
+      rows={5}
       label="Output"
       value={outputText}
       // onChange={e => setOutputText(e.target.value)}
