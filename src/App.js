@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import InputText from './components/InputText';
 import OutputText from './components/OutputText';
+import TextFieldTest from './components/TextFieldTest';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -154,8 +155,8 @@ function App() {
             </Grid>
             <Grid item sm={12} py={{ xs: 2, md: 4 }}>
               <Grid container spacing={1}>
-                <Grid item sm={12} pb={3}>
-                  <Typography variant="body1" color="primary">Remove</Typography>
+                <Grid item sm={12} pb={{ sm: 1, md: 2 }}>
+                  <Typography variant="h6" color="primary">Remove</Typography>
                   <FormGroup>
                     <Grid container spacing={1}>
                       {removalList.map(({ name, label, varName }) => {
@@ -182,7 +183,7 @@ function App() {
                   </FormGroup>
                 </Grid>
                 <Grid item xs={12} sm={6} px={1}>
-                  <Typography variant="body1" color="primary">Reduce Vocabulary</Typography>
+                  <Typography variant="h6" color="primary">Reduce Vocabulary</Typography>
                   <RadioGroup
                     onChange={handleReducers}
                     value="None"
@@ -210,7 +211,7 @@ function App() {
                   </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Typography variant="body1" color="primary">Clean</Typography>
+                  <Typography variant="h6" color="primary">Clean</Typography>
                   <FormGroup>
                     <Grid container spacing={1}>
                       {normalizersList.map(({ name, label, varName }) => {
@@ -241,6 +242,9 @@ function App() {
             <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
               <OutputText outputText={outputText} />
             </Grid>
+            {/* <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
+              <TextFieldTest />
+            </Grid> */}
           </Container>
         </Grid>
       </Paper>
