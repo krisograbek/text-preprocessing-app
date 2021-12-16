@@ -6,6 +6,8 @@ import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
@@ -14,12 +16,13 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import InputText from './components/InputText';
 import OutputText from './components/OutputText';
+import { ReactComponent as Logo } from './logo/logo.svg';
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
-    paddingTop: 40
+    // paddingTop: 12
   },
   formLabel: {
     // margin: 0,
@@ -159,10 +162,20 @@ function App() {
       <Paper className={classes.root} elevation={0} square={true}>
         <Grid container alignContent="center" justifyContent="stretch">
           <Container maxWidth="md">
-            <Grid item sm={12} pt={{ sm: 4, md: 8 }}>
+            <Grid item sm={12} pt={2}>
+              <Typography variant="h4" color="primary" textAlign="center">
+                Text Preprocessing Toolbox
+              </Typography>
+            </Grid>
+            <Grid item sm={12} pt={2}>
+              <Typography variant="body1" textAlign="center">
+                Bring your text into a form that is best suited for your problem
+              </Typography>
+            </Grid>
+            <Grid item sm={12} pt={{ sm: 2, md: 4 }}>
               <InputText inputText={inputText} setInputText={setInputText} />
             </Grid>
-            <Grid item sm={12} py={{ xs: 2, md: 4 }}>
+            <Grid item sm={12} pb={{ xs: 2, md: 4 }}>
               <Grid container spacing={1}>
                 <Grid item sm={12} pb={{ sm: 1, md: 2 }}>
                   <Typography variant="h6" color="primary">Remove</Typography>
@@ -248,15 +261,47 @@ function App() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
+            <Grid item sm={12} pb={{ sm: 2, md: 4 }}>
               <OutputText outputText={outputText} />
             </Grid>
-            {/* <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
-              <TextFieldTest />
-            </Grid> */}
+            <Grid item sm={12}>
+              <Grid container
+                alignItems="center"
+                justifyContent="center"
+              // justifyContent="center"
+              >
+                <Grid item xs={1}>
+                  <Logo
+                    height={40} width={40}
+                    fill={theme.palette.primary.main}
+                    stroke={theme.palette.primary.main}
+                  />
+                </Grid>
+                <Grid item xs={8}>
+                  Designed and created by <Link
+                    href="https://krisograbek.github.io/"
+                    // className={classes.link}
+                    underline="hover"
+                    target="_blank"
+                    rel="noreferrer"
+                  >Kris Ograbek
+                  </Link> &copy; {new Date().getFullYear()} (
+                  <Link
+                    href="https://github.com/krisograbek/text-preprocessing-app"
+                    // className={classes.link}
+                    underline="hover"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Source Code
+                  </Link>
+                  )
+                </Grid>
+              </Grid>
+            </Grid>
           </Container>
         </Grid>
-      </Paper>
+      </Paper >
     </ThemeProvider >
   );
 }
