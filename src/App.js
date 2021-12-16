@@ -6,6 +6,8 @@ import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
@@ -248,12 +250,34 @@ function App() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
+            <Grid item sm={12} pb={{ sm: 2, md: 4 }}>
               <OutputText outputText={outputText} />
             </Grid>
-            {/* <Grid item sm={12} pb={{ sm: 4, md: 8 }}>
-              <TextFieldTest />
-            </Grid> */}
+            <Grid item sm={12}>
+              <Box
+                pt={{ xs: 2, sm: 3 }}
+              // borderTop={1}
+              >
+                Designed and created by <Link
+                  href="https://krisograbek.github.io/"
+                  // className={classes.link}
+                  underline="hover"
+                  target="_blank"
+                  rel="noreferrer"
+                >Kris Ograbek
+                </Link> &copy; {new Date().getFullYear()} (
+                <Link
+                  href="https://github.com/krisograbek/text-preprocessing-app"
+                  // className={classes.link}
+                  underline="hover"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Source Code
+                </Link>
+                )
+              </Box>
+            </Grid>
           </Container>
         </Grid>
       </Paper>
