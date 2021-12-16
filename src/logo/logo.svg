@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita:https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    xmlnsKrita="http://krita.org/namespaces/svg/krita"
+    xmlnsSodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="612pt"
+    height="612pt"
+    viewBox="0 0 612 612">
+<defs/>
+<rect id="shape0" transform="translate(93.3600000000001, 371.28)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="square" stroke-linejoin="bevel" width="178.56" height="124.8" rx="32.0" ry="32.0"/>
+<rect id="shape0" transform="matrix(0.99999997569937 0 0 0.99999997569937 330.96000216956 371.280001516359)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="square" stroke-linejoin="bevel" width="178.56" height="124.8" rx="32.0" ry="32.0"/>
+<path id="shape1" transform="translate(276.24, 396.715956588317)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 5.76404C25.2056 -5.2826 34.8583 2.33406 48 5.76404"/>
+<path id="shape2" transform="translate(74.64, 97.0737938827687)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 213.006C8.18679 -68.0716 449.743 -73.9175 452.64 213.006"/>
+<path id="shape3" transform="translate(81.3599946392715, 287.28)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 23.8186C169.241 -10.3126 279.665 -5.77561 443.52 24.7976"/>
+<path id="shape4" transform="translate(122.64, 101.999992262785)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="1.92" d="M149.28 0C84.226 30.1847 16.5563 89.7331 0 194.88"/>
+<path id="shape01" transform="matrix(-0.999999968061144 0 0 0.999999968061144 485.279997616084 101.999992262784)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M141.84 0C80.0283 30.4077 15.7311 90.3962 0 196.32"/>
+<text id="shape5" kritaUseRichText="true" transform="translate(207.0165625, 265.88)" fill="current" stroke="#000000" stroke-opacity="0" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" font-family="Open Sans SemiBold" font-size="144" font-size-adjust="0.375679" font-stretch="normal" kerning="0" letter-spacing="0" word-spacing="0">
+<tspan x="0">KO</tspan></text>
+<path id="shape6" transform="translate(41.04, 311.28)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="1.92" d="M5.728 42.733C-7.33935 37.0353 1.95131 22.7909 33.6 0"/>
+<path id="shape7" transform="translate(281.04, 88.6473749961536)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 6.63263C4.00136 -0.81481 41.3136 -3.50521 48 6.63263"/>
+<path id="shape8" transform="translate(50.6400000000001, 330.48)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="1.92" d="M0 24C169.42 -10.4698 337.212 -5.43121 504 24"/>
+<path id="shape02" transform="matrix(-0.999999978175711 0 0 0.999999978175711 561.840000406623 311.033500659559)" fill="none" stroke="current" stroke-width="16.0" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="1.91999995708466" d="M5.728 42.733C-7.33935 37.0353 1.95131 22.7909 33.6 0"/>
+</svg>
