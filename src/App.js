@@ -1,16 +1,16 @@
 import Checkbox from '@mui/material/Checkbox';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 import createTheme from '@mui/material/styles/createTheme';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { useEffect, useState } from 'react';
 import './App.css';
@@ -25,16 +25,19 @@ const useStyles = makeStyles((theme) => ({
     // paddingTop: 12
   },
   formLabel: {
-    // margin: 0,
+    marginLeft: 12,
     width: '100%',
     backgroundColor: '#333',
     borderRadius: 5,
     '&:hover': {
       backgroundColor: '#444'
+    },
+    '& label': {
+      margin: 20
     }
   },
   checkbox: {
-    // margin: 0,
+    margin: 10,
     height: 32,
   }
 }))
@@ -52,6 +55,15 @@ const darkTheme = createTheme({
       secondary: '#ccc'
     }
   },
+  components: {
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          marginLeft: 0 // override margin left which is -11px as default
+        }
+      }
+    }
+  }
 });
 
 
@@ -169,13 +181,16 @@ function App() {
             </Grid>
             <Grid item sm={12} pt={2}>
               <Typography variant="body1" textAlign="center">
-                Bring your text into a form that is best suited for your problem
+                Bring your text into a form that is best suited for your task
               </Typography>
             </Grid>
-            <Grid item sm={12} pt={{ sm: 2, md: 4 }}>
+            <Grid item sm={12} pt={{ xs: 1, md: 3 }}>
               <InputText inputText={inputText} setInputText={setInputText} />
             </Grid>
-            <Grid item sm={12} pb={{ xs: 2, md: 4 }}>
+            <Grid item sm={12} pt={{ xs: 1, md: 2 }}>
+              <OutputText outputText={outputText} />
+            </Grid>
+            <Grid item sm={12} pt={{ xs: 1, md: 2 }}>
               <Grid container spacing={1}>
                 <Grid item sm={12} pb={{ sm: 1, md: 2 }}>
                   <Typography variant="h6" color="primary">Remove</Typography>
@@ -205,7 +220,7 @@ function App() {
                   </FormGroup>
                 </Grid>
                 <Grid item xs={12} sm={6} px={1}>
-                  <Typography variant="h6" color="primary">Reduce Vocabulary</Typography>
+                  <Typography variant="h6" color="primary">Lemmatize / Stem</Typography>
                   <RadioGroup
                     onChange={handleReducers}
                     value="None"
@@ -233,6 +248,7 @@ function App() {
                   </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={6}>
+
                   <Typography variant="h6" color="primary">Clean</Typography>
                   <FormGroup>
                     <Grid container spacing={1}>
@@ -261,43 +277,48 @@ function App() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item sm={12} pb={{ sm: 2, md: 4 }}>
-              <OutputText outputText={outputText} />
-            </Grid>
-            <Grid item sm={12}>
-              <Grid container
-                alignItems="center"
-                justifyContent="center"
-              // justifyContent="center"
+
+            <Grid item sm={12} pt={{ xs: 2, md: 3 }}>
+              <Box
+                sx={{
+                  borderTop: 1,
+                  paddingTop: 1
+                }}
               >
-                <Grid item xs={1}>
-                  <Logo
-                    height={40} width={40}
-                    fill={theme.palette.primary.main}
-                    stroke={theme.palette.primary.main}
-                  />
+                <Grid container
+                  alignItems="center"
+                  justifyContent="space-evenly"
+                // justifyContent="center"
+                >
+                  <Grid item xs={1}>
+                    <Logo
+                      height={40} width={40}
+                      fill={theme.palette.primary.main}
+                      stroke={theme.palette.primary.main}
+                    />
+                  </Grid>
+                  <Grid item xs={8} zeroMinWidth>
+                    Designed and created by <Link
+                      href="https://krisograbek.github.io/"
+                      // className={classes.link}
+                      underline="hover"
+                      target="_blank"
+                      rel="noreferrer"
+                    >Kris Ograbek
+                    </Link> &copy; {new Date().getFullYear()} (
+                    <Link
+                      href="https://github.com/krisograbek/text-preprocessing-app"
+                      // className={classes.link}
+                      underline="hover"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Source Code
+                    </Link>
+                    )
+                  </Grid>
                 </Grid>
-                <Grid item xs={8}>
-                  Designed and created by <Link
-                    href="https://krisograbek.github.io/"
-                    // className={classes.link}
-                    underline="hover"
-                    target="_blank"
-                    rel="noreferrer"
-                  >Kris Ograbek
-                  </Link> &copy; {new Date().getFullYear()} (
-                  <Link
-                    href="https://github.com/krisograbek/text-preprocessing-app"
-                    // className={classes.link}
-                    underline="hover"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Source Code
-                  </Link>
-                  )
-                </Grid>
-              </Grid>
+              </Box>
             </Grid>
           </Container>
         </Grid>

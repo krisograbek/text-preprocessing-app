@@ -9,13 +9,13 @@ function InputText(props) {
       multiline
       fullWidth
       rows={5}
-      label="Paste Your Text Here"
+      label="Type / Paste Your Text Here"
       value={inputText}
       onChange={e => setInputText(e.target.value)}
       inputProps={{
         maxLength: 1000,
       }}
-      sx={{ ml: -2 }}
+    // sx={{ ml: -2 }}
     />
   )
 }

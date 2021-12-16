@@ -70,14 +70,14 @@ function OutputText(props) {
           fullWidth
           disabled
           rows={5}
-          label="Output"
+          label="Your Text Ready To Use"
           value={outputText}
           // onChange={e => setOutputText(e.target.value)}
           onClick={(event) => handleClick(event)}
           inputProps={{
             maxLength: 1000,
           }}
-          sx={{ ml: -2 }}
+        // sx={{ ml: -2 }}
         />
       </MyTooltip>
       <Popover
