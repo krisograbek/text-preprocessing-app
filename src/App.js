@@ -1,11 +1,10 @@
-import { Radio, RadioGroup, Typography } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormLabel from '@mui/material/FormLabel';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import createTheme from '@mui/material/styles/createTheme';
@@ -15,7 +14,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import InputText from './components/InputText';
 import OutputText from './components/OutputText';
-import TextFieldTest from './components/TextFieldTest';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   checkbox: {
-    margin: 0,
+    // margin: 0,
     height: 32,
   }
 }))
@@ -125,7 +123,7 @@ function App() {
     { name: "snowballStemmer", label: "Snowball Stemmer" },
   ]
 
-  useEffect(() => {
+  const fetchData = () => {
     const body = {
       text: inputText,
       operations: operations,
@@ -143,7 +141,18 @@ function App() {
         setOutputText(data.text);
       })
       .catch(error => console.log(error))
+  }
+
+  useEffect(() => {
+    fetchData();
   }, [operations, reducer])
+
+  useEffect(() => {
+    const timeOutId = setTimeout(() => {
+      fetchData();
+    }, 500);
+    return () => clearTimeout(timeOutId);
+  }, [inputText]);
 
   return (
     <ThemeProvider theme={theme}>

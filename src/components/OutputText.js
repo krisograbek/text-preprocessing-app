@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const BlueOnGreenTooltip = styled(({ className, ...props }) => (
+const MyTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} componentsProps={{ tooltip: { className: className } }} />
 ))(({ theme }) => `
     color: ${theme.palette.primary.main};
@@ -62,7 +62,7 @@ function OutputText(props) {
 
   return (
     <div>
-      <BlueOnGreenTooltip title="Click the Textarea to copy" followCursor>
+      <MyTooltip title="Click the Textarea to copy" followCursor>
         <TextField
           id="fullWidth"
           className={classes.textField}
@@ -79,7 +79,7 @@ function OutputText(props) {
           }}
           sx={{ ml: -2 }}
         />
-      </BlueOnGreenTooltip>
+      </MyTooltip>
       <Popover
         id={id}
         open={open}
