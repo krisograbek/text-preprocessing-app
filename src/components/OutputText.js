@@ -4,9 +4,10 @@ import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
+import styled from '@mui/material/styles/styled';
 
 import makeStyles from '@mui/styles/makeStyles';
+import { withTheme } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -14,46 +15,26 @@ const useStyles = makeStyles((theme) => ({
       color: 'white',
     },
     '& textarea.Mui-disabled': {
-      // color: 'white',
       textFillColor: 'white',
       '&:hover': {
         cursor: "pointer"
       },
-      // '& tooltip:hover': {
-      //   cursor: "pointer"
-      // },
     },
     '& .MuiOutlinedInput-root': {
       '&:hover fieldset': {
         borderColor: theme.palette.primary.light,
       },
-      '& fieldset': {
-        // cursor: ,
-      }
     }
-  },
+  }
 }))
 
-
-const CssTextField = styled(TextField)({
-  '& label.Mui-disabled': {
-    color: 'white',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'green',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'red',
-    },
-    '&:hover fieldset': {
-      borderColor: 'yellow',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'green',
-    },
-  },
-});
+const BlueOnGreenTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} componentsProps={{ tooltip: { className: className } }} />
+))(({ theme }) => `
+    color: ${theme.palette.primary.main};
+    background-color: #333;
+    font-size: 1em;
+`);
 
 // Man, I had to move this outside of the function to be 
 // able to reset timer
@@ -83,7 +64,7 @@ function OutputText(props) {
 
   return (
     <div>
-      <Tooltip title="Copy to Clipboard">
+      <BlueOnGreenTooltip title="Click the Textarea to copy" followCursor>
         <TextField
           id="fullWidth"
           className={classes.textField}
@@ -100,7 +81,7 @@ function OutputText(props) {
           }}
           sx={{ color: "green" }}
         />
-      </Tooltip>
+      </BlueOnGreenTooltip>
       <Popover
         id={id}
         open={open}
