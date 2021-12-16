@@ -15,10 +15,7 @@ function InputText(props) {
       inputProps={{
         maxLength: 1000,
       }}
-      sx={{
-        ml: -2
-      }}
-
+      sx={{ ml: -2 }}
     />
   )
 }
