@@ -1,13 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import Popover from '@mui/material/Popover';
+import styled from '@mui/material/styles/styled';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
-import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import styled from '@mui/material/styles/styled';
-
 import makeStyles from '@mui/styles/makeStyles';
-import { withTheme } from '@mui/styles';
+import React, { useState } from 'react';
+
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -79,7 +77,7 @@ function OutputText(props) {
           inputProps={{
             maxLength: 1000,
           }}
-          sx={{ color: "green" }}
+          sx={{ ml: -2 }}
         />
       </BlueOnGreenTooltip>
       <Popover
@@ -88,11 +86,15 @@ function OutputText(props) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
           vertical: 'bottom',
           horizontal: 'center',
         }}
       >
-        <Typography sx={{ p: 2 }}>Text Copied!</Typography>
+        <Typography sx={{ p: 1 }} color="primary">Text Copied!</Typography>
       </Popover>
     </div>
   )
