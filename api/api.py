@@ -1,7 +1,19 @@
 from flask import Flask, request
 from text_helpers import handle_operations, handle_reducer
 
-app = Flask(__name__)
+
+# basic flask app
+# app = Flask(__name__)
+
+# flask app serving static html files
+app = Flask(__name__, static_folder="./client", static_url_path="/")
+
+# add default file to read
+# we can get rid of index.html from
+# https://localhost:5000/index.html
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 @app.route('/api/preprocess', methods = ["POST"])
 def get_text_and_functions():

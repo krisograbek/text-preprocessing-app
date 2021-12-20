@@ -1,5 +1,6 @@
 import re
 import string
+import nltk
 from nltk.corpus import wordnet as wn
 from nltk.corpus import stopwords
 from nltk import pos_tag
@@ -7,6 +8,11 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer, PorterStemmer, SnowballStemmer
 from collections import defaultdict
 import unidecode
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
 
 
 tag_map = defaultdict(lambda : wn.NOUN)
