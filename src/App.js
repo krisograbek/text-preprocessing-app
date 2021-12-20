@@ -288,19 +288,24 @@ function App() {
                 <Grid container
                   alignItems="center"
                   justifyContent="space-evenly"
-                // justifyContent="center"
                 >
                   <Grid item xs={1}>
-                    <Logo
-                      height={40} width={40}
-                      fill={theme.palette.primary.main}
-                      stroke={theme.palette.primary.main}
-                    />
+                    <Link
+                      href="https://krisograbek.com/"
+                      underline="hover"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Logo
+                        height={40} width={40}
+                        fill={theme.palette.primary.main}
+                        stroke={theme.palette.primary.main}
+                      />
+                    </Link>
                   </Grid>
                   <Grid item xs={8} zeroMinWidth>
                     Designed and created by <Link
-                      href="https://krisograbek.github.io/"
-                      // className={classes.link}
+                      href="https://krisograbek.com/"
                       underline="hover"
                       target="_blank"
                       rel="noreferrer"
@@ -308,7 +313,6 @@ function App() {
                     </Link> &copy; {new Date().getFullYear()} (
                     <Link
                       href="https://github.com/krisograbek/text-preprocessing-app"
-                      // className={classes.link}
                       underline="hover"
                       target="_blank"
                       rel="noreferrer"
