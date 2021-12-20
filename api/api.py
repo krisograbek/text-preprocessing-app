@@ -3,10 +3,10 @@ from text_helpers import handle_operations, handle_reducer
 
 
 # basic flask app
-app = Flask(__name__)
+# app = Flask(__name__)
 
 # flask app serving static html files
-# app = Flask(__name__, static_folder="../build", static_url_path="/")
+app = Flask(__name__, static_folder="./client", static_url_path="/")
 
 # add default file to read
 # we can get rid of index.html from
