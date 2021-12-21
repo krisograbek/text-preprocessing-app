@@ -7,8 +7,7 @@
 This repository is bootstraped from [this template](https://github.com/krisograbek/react-flask-template).
 
 # Demo
-
-![demo](https://user-images.githubusercontent.com/48050596/136319271-b41d9308-8aac-47fc-b348-55ccaed5cba1.gif)
+![demo](https://user-images.githubusercontent.com/48050596/146919927-66203e7c-e701-48af-8190-04c59df90011.gif)
 
 # Run the project locally
 
