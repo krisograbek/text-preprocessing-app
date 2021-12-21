@@ -1,8 +1,18 @@
-## Description
+# Description
 
-This is a template repository to build React-Flask applications. The code is based on [this tutorial](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project) by Miguel Grinberg
+**Do you need to quickly clean your text?** Feel free to use this [App](https://krisograbek-text-toolbox.herokuapp.com/)
 
-## Preparing a Flask API Backend
+## Sources
+
+This repository is bootstraped from [this template](https://github.com/krisograbek/react-flask-template).
+
+# Demo
+
+![demo](https://user-images.githubusercontent.com/48050596/136319271-b41d9308-8aac-47fc-b348-55ccaed5cba1.gif)
+
+# Run the project locally
+
+## Prepare the model
 
 ### Create and run `virtualenv`
 
@@ -21,7 +31,22 @@ $ venv\Scripts\activate
 
 ### Install packages from `requirements.txt`
 
-`(venv) $ pip install -r requirements.txt`
+`(venv) $ pip install -r reqs_local.txt`
+
+### Add the model
+
+This repository does **not** contain the model. It's a bad practice to store big files on Github. The size of our model file (~80MB) is considered big.
+
+If you open the `VGG_training.ipynb` using colab you'll be able to train the same model I used. You'll find the instruction how and where to download the model.
+After the steps, your `model/` directory should include `hotdog_vgg.h5`.
+
+We want to use a tflite model for the project. First, we have to convert. To do that, we use the code in `converter.py`:
+
+`(venv) $ python converter.py`
+
+Your `model/` directory should include both `hotdog_vgg.h5` and `hotdog_vgg.tflite` now
+
+## Prepare a Flask API Backend
 
 ### Run Flask Backend
 
@@ -30,7 +55,7 @@ $ venv\Scripts\activate
 (venv) $ npm run start-api
 ```
 
-## Run Frontend
+## Prepare Frontend
 
 ### Open a second terminal in the project directory
 
@@ -40,25 +65,23 @@ Installs packages from `package.json`
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
+### Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-## Other Frontend Scripts
+# Deploy Locally
 
-### `npm test`
+First, navigate to the project directory. Then, run the following commands:
+```
+$ npm run build
+$ cp -r build/* api/client/
+$ source venv/bin/activate (linux)
+or
+$ venv\Scripts\activate (windows)
+(venv)$ flask run
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app runs in the production mode.
+### Open [http://localhost:5000](http://localhost:5000) in your browser
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
