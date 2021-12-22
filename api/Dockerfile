@@ -1,6 +1,6 @@
 # Docker file for the flask API
 
-FROM python:3.8
+FROM python:3.8-slim-buster
 WORKDIR /app
 
 COPY ./requirements.txt ./api.py ./text_helpers.py ./.flaskenv ./
