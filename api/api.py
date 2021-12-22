@@ -1,3 +1,4 @@
+import time
 from flask import Flask, request
 from text_helpers import handle_operations, handle_reducer
 
@@ -28,3 +29,8 @@ def get_text_and_functions():
         output_text = handle_reducer(output_text, reducer)
     # print(output_text)
     return {'text': output_text}
+
+
+@app.route('/api/time')
+def get_time():
+    return {"time": time.time()}

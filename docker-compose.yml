@@ -1,0 +1,16 @@
+# adding the version is necessary to avoid
+# ERROR: Unsupported config option for services: "api"
+version: '3'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: text-preprocessing-app-api
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    image: text-preprocessing-app-client
+    ports:
+      - "80:80"
