@@ -2,6 +2,12 @@
 
 **Do you need to quickly clean your text?** Feel free to use this [App](https://krisograbek-text-toolbox.herokuapp.com/)
 
+Do you need a tool that removes punctuation, HTML tags, numbers, emojis, stopwords?
+
+If you want to stem, lemmatize, correct spelling, or remove accented characters, the tool will help you. 
+
+It's easy to use and intuitive.
+
 ## Sources
 
 This repository is bootstraped from [this template](https://github.com/krisograbek/react-flask-template).
